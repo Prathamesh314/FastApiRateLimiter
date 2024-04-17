@@ -11,6 +11,8 @@ class TokenBucket:
         self.redis_manager.lpop(self.key)
 
     def refill(self):
+        if self.redis_manager.exists(self.key):
+            return
         for _ in range(self.size_of_bucket):
             self.redis_manager.lpush(self.key, _)
         self.redis_manager.expire(self.key, 60)

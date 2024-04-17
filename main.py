@@ -3,6 +3,8 @@ from typing import Optional
 from fastapi import FastAPI
 from redismanager import *
 
+
+
 app = FastAPI()
 TOKEN_BUCKET = None
 TOKEN_BUCKET = get_token_bucket("test", 11) if TOKEN_BUCKET is None else TOKEN_BUCKET
